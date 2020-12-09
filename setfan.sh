@@ -8,8 +8,12 @@ do
   echo "$managefilepath set manual" 
   sudo /bin/su -c "echo manual > $managefilepath"
 
-  fanfilepath=$(find "$i"/device/hwmon -regextype posix-awk -regex ".*/hwmon[0-9]{1,2}")/pwm1_enable
-  catfan=$(cat "$fanfilepath")
-  echo "$fanfilepath set $catfan" 
-  sudo /bin/su -c "echo 1 > $fanfilepath"
+  fanfilepath=$(find "$i"/device/hwmon -regextype posix-awk -regex ".*/hwmon[0-9]{1,2}")/pwm1
+
+  catfan=$(cat "${fanfilepath}_enable")
+  echo "${fanfilepath}_enable set $catfan" 
+  sudo /bin/su -c "echo 1 > ${fanfilepath}_enable"
+
+  sudo /bin/su -c "echo 255 > ${fanfilepath}"
+
 done
