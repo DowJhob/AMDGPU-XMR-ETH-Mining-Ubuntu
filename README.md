@@ -37,7 +37,7 @@ sudo apt install mc vim htop lshw
 ### Disable screensaver, AMD tweaks, fall back to ethX network interface naming
 Edit the grub configuration file:
 ```sh
-sudo vi /etc/default/grub
+sudo nano /etc/default/grub
 ```
 
 Replace ```GRUB_CMDLINE_LINUX_DEFAULT``` and ```GRUB_CMDLINE_LINUX``` lines
@@ -52,9 +52,9 @@ Update grub configuration
 sudo update-grub && sudo update-grub2 && sudo update-grub-legacy-ec2 && sudo update-initramfs -u -k all
 ```
 
-Edit network configuration file:
+Edit network configuration file: Зачем? оставляю штатное именование и netplan
 ```sh
-sudo vi /etc/network/interfaces
+sudo nano /etc/network/interfaces
 ```
 
 Replace ```enpXsX``` to ```eth0```
@@ -100,7 +100,7 @@ lspci -nn | grep -E 'VGA|Display'
 ### AMDGPU commands (clinfo ...)
 Edit your ```.profile```
 ```sh
-vi ~/.profile
+nano ~/.profile
 ```
 and add amdgpu-pro PATH to new line
 ```sh
